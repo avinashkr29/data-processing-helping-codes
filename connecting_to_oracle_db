@@ -1,0 +1,32 @@
+#To connect to oracle 
+import glob
+import datetime as dt
+import pandas as pd
+import cx_Oracle
+con = cx_Oracle.connect(u'username/password@url:port/schema') #change details
+
+# Open the file
+#f = open('output.csv', 'w')
+cursor = con.cursor()
+# Execute the query
+cursor.execute("select * from column where TO_CHAR(time,'DD-MON-YY') = '01-MAR-18' ") #change queries
+# Get data in batches
+i=0
+while True:
+    # Read the data
+    print('starting')
+    df = pd.DataFrame(cursor.fetchmany(10000))
+    print(i,end=',')
+    # We are done if there are no data
+    if len(df) == 0:
+        break
+    # Let's write to the file
+    else:
+        df.to_csv(str(i)+'.csv', header=False)
+    i=i+1
+    print(len(df),end=',')
+
+# Clean up
+con.close()
+cursor.close()
+connection.close()
