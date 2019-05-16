@@ -1,5 +1,5 @@
 #Chi square Testing for two categorical variable
-stat, p, dof, expected = sc.stats.chi2_contingency(pd.crosstab(df.TRBL_TYPE_CODE,df.REPAIR_CAUSE_REASON))
+stat, p, dof, expected = sc.stats.chi2_contingency(pd.crosstab(df.column1,df.column2))
 
 # interpret test-statistic
 prob = 0.95
