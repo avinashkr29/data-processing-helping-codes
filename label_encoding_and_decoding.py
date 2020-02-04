@@ -11,3 +11,12 @@ fit.apply(lambda x: d[x.name].inverse_transform(x))
 
 # Using the dictionary to label future data
 df.apply(lambda x: d[x.name].transform(x))
+
+#Saving and loading a dictonary
+import pickle
+a = {'hello': 'world'}
+with open('filename.pickle', 'wb') as handle:
+    pickle.dump(a, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('filename.pickle', 'rb') as handle:
+    b = pickle.load(handle)
+print a == b
