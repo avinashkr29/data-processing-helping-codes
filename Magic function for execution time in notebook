@@ -1,0 +1,3 @@
+#Magic funtion to time cell execution
+%install_ext https://raw.github.com/cpcloud/ipython-autotime/master/autotime.py
+%load_ext autotime
