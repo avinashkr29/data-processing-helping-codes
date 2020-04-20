@@ -1,3 +1,4 @@
+from sklearn.preprocessing import LabelEncoder
 #Label encoding across multiple columns in scikit-learn
 from collections import defaultdict
 d = defaultdict(LabelEncoder)
