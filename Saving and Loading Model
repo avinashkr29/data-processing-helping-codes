@@ -25,3 +25,23 @@ pickle.dump(model, open(filename, 'wb'))
 loaded_model = pickle.load(open(filename, 'rb'))
 result = loaded_model.score(X_test, Y_test)
 print(result)
+
+########################################################################################################
+
+import pickle
+with open('label_encoding.pickle', 'wb') as handle:
+    pickle.dump(d, handle)
+    
+#Saving RFC model
+import pickle
+filename = 'finalized_model.pickle'
+pickle.dump(rfc, open(filename, 'wb'))
+
+with open('label_encoding.pickle', 'rb') as handle:
+    b = pickle.load(handle)
+    
+    
+# load the model from disk
+filename='finalized_model.pickle'
+loaded_model = pickle.load(open(filename, 'rb'))
+#dataset['Prediction'] = loaded_model.predict(dataset[['RepeatDeviationIndicator','SourceSystemID','SiteDescription','DaysBetweenDiscoveryandOpen','DaysBetweenOpenandRiskAssessment','Incident_month', 'Incident_day', 'PrimaryEventCategoryDescription','SecondaryEventCategoryDescription','TertiaryEventCategoryDescription']])
