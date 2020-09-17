@@ -1,0 +1,25 @@
+#Select Country
+country='Germany Market Company'
+
+fig = plt.figure(figsize=(20,40))
+
+df1=df.loc[df['OriginatingManagementUnitCode']==country]
+
+#Selecting top 10 Brands by complaint volumne
+top9_brands_list=df.loc[df['OriginatingManagementUnitCode']==country]['LocalTradeName'].value_counts()[:9].index
+
+i=931
+
+for brand in top9_brands_list:
+    plt.subplot(i)
+    df1.loc[df1['LocalTradeName']==brand]['N_V'].value_counts()[:10].sort_values().plot(kind='barh')
+    plt.title(brand)
+    i=i+1
+    
+plt.tight_layout()
+
+
+fig.suptitle('Top 9 Brands in '+country+' (complaint volume wise)',fontsize=18)
+fig.subplots_adjust(top=0.95)
+plt.show()
+plt.savefig('Top Brand Problems '+country+'.jpg',bbox_inches = 'tight', pad_inches = 0)
